@@ -8,7 +8,7 @@ import android.view.ViewGroup
 
 import com.english.ivan.englishforivan.R
 
-class PresentSingleFragment : Fragment() {
+class PresentSimpleFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

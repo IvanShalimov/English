@@ -3,7 +3,9 @@ package com.english.ivan.englishforivan
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import com.english.ivan.englishforivan.exercise.countable.CountableFragment
 import com.english.ivan.englishforivan.exercise.plural_nouns.PluralNounsFragment
+import com.english.ivan.englishforivan.exercise.present_simple.PresentSimpleFragment
 import com.english.ivan.englishforivan.exercise.select_exercise.SelectExerciseFragment
 import com.english.ivan.englishforivan.exercise.time.TimeFragment
 
@@ -19,10 +21,10 @@ class StartActivity : AppCompatActivity(), SelectExerciseFragment.OnFragmentInte
                 fragment = TimeFragment()
             }
             "Countable and Uncountable nouns" -> {
-                fragment = PluralNounsFragment()
+                fragment = CountableFragment()
             }
             "Present Simple" -> {
-                fragment = PluralNounsFragment()
+                fragment = PresentSimpleFragment()
             }
             else -> {
                 fragment = PluralNounsFragment()
