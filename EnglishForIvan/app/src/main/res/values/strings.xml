@@ -3,4 +3,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_first_lesson">Не используйте вспомогательные слова pair ofи.т.п.</string>
+    <string name="check">Проверить</string>
+    <string name="Your_answer">Ваш ответ</string>
+    <string name="generate_word">Сгенерировать слово</string>
 </resources>
