@@ -33,8 +33,15 @@ class PluralNounsFragment : Fragment() {
         listener?.onFragmentInteraction(uri)
     }
 
-    val array = arrayOf("car","box","day")
-    private val arrayAnswer = arrayOf("cars","boxes","days")
+    val array = arrayOf("car","box","day","bus","class","dish","watch","potato","family","baby","country","toy",
+        "valley","wife","loaf","scarf","man","woman","child","person","foot","tooth","penny","fish","sheep"
+        ,"clothes","jeans","shorts","scissors","trousers","glasses")
+
+    private val arrayAnswer = arrayOf("cars","boxes","days","buses","classes","dishes","watches",
+        "potatoes","families","babies","countries","toys","valleys","wives","loaves","scarves"
+        ,"men","women","children","people","feet","teeth","pence","fish","sheep"
+        ,"clothes","jeans","shorts","scissors","trousers","glasses")
+
     var currentSelect:Int = 0
 
     private fun generateWord(){
