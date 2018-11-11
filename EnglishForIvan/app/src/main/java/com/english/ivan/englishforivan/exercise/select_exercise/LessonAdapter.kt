@@ -30,7 +30,7 @@ interface OnSelectLesson{
 
 class LessonItemViewHolder(view: View,val callback: OnSelectLesson):RecyclerView.ViewHolder(view){
     fun bind(item:String){
-        itemView.action_button.text = item
-        itemView.action_button.setOnClickListener { callback.onSelect(item) }
+        itemView.lesson_select_title.text = item
+        itemView.setOnClickListener { callback.onSelect(item) }
     }
 }

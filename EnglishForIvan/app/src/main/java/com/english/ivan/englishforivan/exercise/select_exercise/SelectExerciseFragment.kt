@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.english.ivan.englishforivan.R
 import kotlinx.android.synthetic.main.fragment_select_exercise.view.*
+import androidx.recyclerview.widget.DividerItemDecoration
+
+
 
 
 class SelectExerciseFragment : Fragment(), OnSelectLesson {
@@ -28,6 +31,13 @@ class SelectExerciseFragment : Fragment(), OnSelectLesson {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_select_exercise, container, false)
         view.list_lesson.layoutManager = LinearLayoutManager(context)
+        //Добавляем разделитель для нашей ориентации(В данном случае для вертикальной)
+        val dividerItemDecoration = DividerItemDecoration(
+            view.list_lesson.context,
+            (view.list_lesson.layoutManager as LinearLayoutManager).orientation
+        )
+        view.list_lesson.addItemDecoration(dividerItemDecoration)
+
         view.list_lesson.adapter = LessonAdapter(
             listOf(
                 "Plural nouns",
@@ -43,7 +53,7 @@ class SelectExerciseFragment : Fragment(), OnSelectLesson {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if(context is OnFragmentInteractionListener) {
+        if (context is OnFragmentInteractionListener) {
             callback = context
         }
     }
@@ -54,17 +64,7 @@ class SelectExerciseFragment : Fragment(), OnSelectLesson {
     }
 
     interface OnFragmentInteractionListener {
-        fun onNewScreenOpen(screen:String)
+        fun onNewScreenOpen(screen: String)
     }
 
-    companion object {
-   /*     @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SelectExerciseFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }*/
-    }
 }
