@@ -2,6 +2,7 @@ package com.english.ivan.englishforivan.exercise.present_simple
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -18,5 +19,8 @@ class PresentSimpleFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_present_single, container, false)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return super.onOptionsItemSelected(item)
+    }
 
 }

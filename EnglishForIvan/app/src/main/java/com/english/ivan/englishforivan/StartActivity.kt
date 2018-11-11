@@ -1,6 +1,8 @@
 package com.english.ivan.englishforivan
 
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.english.ivan.englishforivan.exercise.countable.CountableFragment
@@ -11,9 +13,13 @@ import com.english.ivan.englishforivan.exercise.time.TimeFragment
 
 class StartActivity : AppCompatActivity(), SelectExerciseFragment.OnFragmentInteractionListener {
     override fun onNewScreenOpen(screen: String) {
+        supportActionBar?.let {
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setHomeButtonEnabled(true)
+        }
 
         val fragment: Fragment
-        when(screen){
+        when (screen) {
             "Plural nouns" -> {
                 fragment = PluralNounsFragment()
             }
@@ -33,7 +39,7 @@ class StartActivity : AppCompatActivity(), SelectExerciseFragment.OnFragmentInte
         }
         supportFragmentManager?.let {
             it.beginTransaction()
-                .replace(R.id.fragment_host,fragment)
+                .replace(R.id.fragment_host, fragment)
                 .addToBackStack(null)
                 .commit()
         }
@@ -45,7 +51,8 @@ class StartActivity : AppCompatActivity(), SelectExerciseFragment.OnFragmentInte
 
         supportFragmentManager?.let {
             it.beginTransaction()
-                .add(R.id.fragment_host,
+                .add(
+                    R.id.fragment_host,
                     SelectExerciseFragment()
                 )
                 .commit()
@@ -54,14 +61,26 @@ class StartActivity : AppCompatActivity(), SelectExerciseFragment.OnFragmentInte
 
     override fun onBackPressed() {
 
-        val count =supportFragmentManager.backStackEntryCount
+        val count = supportFragmentManager.backStackEntryCount
 
         if (count == 0) {
             super.onBackPressed()
             //additional code
         } else {
+            supportActionBar?.let {
+                it.setDisplayHomeAsUpEnabled(false)
+                it.setHomeButtonEnabled(false)
+            }
+
             supportFragmentManager.popBackStack()
         }
-
     }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if(item?.itemId == android.R.id.home){
+            onBackPressed()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 }

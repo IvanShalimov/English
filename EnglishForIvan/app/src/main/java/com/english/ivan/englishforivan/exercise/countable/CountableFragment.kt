@@ -2,6 +2,7 @@ package com.english.ivan.englishforivan.exercise.countable
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -36,6 +37,7 @@ class CountableFragment : Fragment(), View.OnClickListener {
     ): View? {
         root = inflater.inflate(R.layout.fragment_countable, container, false)
 
+
         root.countable_button.setOnClickListener(this)
         root.uncountable_button.setOnClickListener(this)
 
@@ -69,6 +71,10 @@ class CountableFragment : Fragment(), View.OnClickListener {
         }
 
         generateWord()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return super.onOptionsItemSelected(item)
     }
 
 }

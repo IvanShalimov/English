@@ -2,6 +2,7 @@ package com.english.ivan.englishforivan.exercise.time
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -43,4 +44,9 @@ class TimeFragment : Fragment() {
             else -> 0
         }
     }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return super.onOptionsItemSelected(item)
+    }
+
 }
