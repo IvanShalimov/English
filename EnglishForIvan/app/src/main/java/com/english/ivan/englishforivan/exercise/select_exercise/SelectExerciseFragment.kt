@@ -43,7 +43,8 @@ class SelectExerciseFragment : Fragment(), OnSelectLesson {
                 "Plural nouns",
                 "What's the time?",
                 "Countable and Uncountable nouns",
-                "Present Simple"
+                "Present Simple",
+                "Questions"
             ), this
         )
         return view

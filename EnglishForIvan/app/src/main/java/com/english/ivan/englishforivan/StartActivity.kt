@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.english.ivan.englishforivan.exercise.countable.CountableFragment
 import com.english.ivan.englishforivan.exercise.plural_nouns.PluralNounsFragment
 import com.english.ivan.englishforivan.exercise.present_simple.PresentSimpleFragment
+import com.english.ivan.englishforivan.exercise.questions.QuestionsFragment
 import com.english.ivan.englishforivan.exercise.select_exercise.SelectExerciseFragment
 import com.english.ivan.englishforivan.exercise.time.TimeFragment
 
@@ -31,6 +32,9 @@ class StartActivity : AppCompatActivity(), SelectExerciseFragment.OnFragmentInte
             }
             "Present Simple" -> {
                 fragment = PresentSimpleFragment()
+            }
+            "Questions" -> {
+                fragment = QuestionsFragment()
             }
             else -> {
                 fragment = PluralNounsFragment()
