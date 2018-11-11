@@ -1,8 +1,8 @@
 package com.english.ivan.englishforivan
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.english.ivan.englishforivan.exercise.countable.CountableFragment
 import com.english.ivan.englishforivan.exercise.plural_nouns.PluralNounsFragment
 import com.english.ivan.englishforivan.exercise.present_simple.PresentSimpleFragment
@@ -12,7 +12,7 @@ import com.english.ivan.englishforivan.exercise.time.TimeFragment
 class StartActivity : AppCompatActivity(), SelectExerciseFragment.OnFragmentInteractionListener {
     override fun onNewScreenOpen(screen: String) {
 
-        val fragment:Fragment
+        val fragment: Fragment
         when(screen){
             "Plural nouns" -> {
                 fragment = PluralNounsFragment()

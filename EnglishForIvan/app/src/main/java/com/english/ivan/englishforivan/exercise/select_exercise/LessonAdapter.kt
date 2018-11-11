@@ -1,15 +1,15 @@
 package com.english.ivan.englishforivan.exercise.select_exercise
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.english.ivan.englishforivan.R
 import kotlinx.android.synthetic.main.lesson_list_item.view.*
 
 class LessonAdapter(var lessons:List<String>,
                     val callback: OnSelectLesson
-):RecyclerView.Adapter<LessonItemViewHolder>() {
+): RecyclerView.Adapter<LessonItemViewHolder>() {
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): LessonItemViewHolder {
         val view = LayoutInflater.from(p0.context).inflate(R.layout.lesson_list_item,p0,false)
         return LessonItemViewHolder(view, callback)

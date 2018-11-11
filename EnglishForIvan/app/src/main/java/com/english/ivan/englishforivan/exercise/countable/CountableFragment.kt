@@ -1,10 +1,10 @@
 package com.english.ivan.englishforivan.exercise.countable
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 
 import com.english.ivan.englishforivan.R
 import kotlinx.android.synthetic.main.fragment_countable.view.*
