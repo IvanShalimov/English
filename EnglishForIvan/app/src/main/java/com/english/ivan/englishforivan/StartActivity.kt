@@ -1,7 +1,6 @@
 package com.english.ivan.englishforivan
 
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -11,8 +10,16 @@ import com.english.ivan.englishforivan.exercise.present_simple.PresentSimpleFrag
 import com.english.ivan.englishforivan.exercise.questions.QuestionsFragment
 import com.english.ivan.englishforivan.exercise.select_exercise.SelectExerciseFragment
 import com.english.ivan.englishforivan.exercise.time.TimeFragment
+import ru.terrakok.cicerone.Navigator
+import ru.terrakok.cicerone.Router
 
 class StartActivity : AppCompatActivity(), SelectExerciseFragment.OnFragmentInteractionListener {
+
+    lateinit var  router: Router
+    private val naviganor: Navigator = Navigator {
+
+    }
+
     override fun onNewScreenOpen(screen: String) {
         supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
@@ -54,6 +61,8 @@ class StartActivity : AppCompatActivity(), SelectExerciseFragment.OnFragmentInte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
 
+        router = EnglishApplication.getRouter()
+
         supportFragmentManager?.let {
             it.beginTransaction()
                 .add(
@@ -62,6 +71,16 @@ class StartActivity : AppCompatActivity(), SelectExerciseFragment.OnFragmentInte
                 )
                 .commit()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        EnglishApplication.getNavigatorHolder().setNavigator(naviganor)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        EnglishApplication.getNavigatorHolder().removeNavigator()
     }
 
     override fun onBackPressed() {
