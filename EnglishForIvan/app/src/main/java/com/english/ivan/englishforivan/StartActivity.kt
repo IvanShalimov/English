@@ -1,24 +1,30 @@
 package com.english.ivan.englishforivan
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.english.ivan.englishforivan.custom.SupportAppNavigatorX
 import com.english.ivan.englishforivan.exercise.countable.CountableFragment
 import com.english.ivan.englishforivan.exercise.plural_nouns.PluralNounsFragment
 import com.english.ivan.englishforivan.exercise.present_simple.PresentSimpleFragment
 import com.english.ivan.englishforivan.exercise.questions.QuestionsFragment
 import com.english.ivan.englishforivan.exercise.select_exercise.SelectExerciseFragment
 import com.english.ivan.englishforivan.exercise.time.TimeFragment
-import ru.terrakok.cicerone.Navigator
+import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
+import javax.inject.Inject
 
 class StartActivity : AppCompatActivity(), SelectExerciseFragment.OnFragmentInteractionListener {
 
+    @Inject
     lateinit var  router: Router
-    private val naviganor: Navigator = Navigator {
 
-    }
+    @Inject
+    lateinit var navigationHolder:NavigatorHolder
+
+    val navigator = SupportAppNavigatorX(this,supportFragmentManager,-1)
 
     override fun onNewScreenOpen(screen: String) {
         supportActionBar?.let {
@@ -61,7 +67,7 @@ class StartActivity : AppCompatActivity(), SelectExerciseFragment.OnFragmentInte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
 
-        router = EnglishApplication.getRouter()
+        EnglishApplication.graph.inject(this)
 
         supportFragmentManager?.let {
             it.beginTransaction()
@@ -75,12 +81,12 @@ class StartActivity : AppCompatActivity(), SelectExerciseFragment.OnFragmentInte
 
     override fun onResume() {
         super.onResume()
-        EnglishApplication.getNavigatorHolder().setNavigator(naviganor)
+        navigationHolder.setNavigator(navigator)
     }
 
     override fun onPause() {
         super.onPause()
-        EnglishApplication.getNavigatorHolder().removeNavigator()
+        navigationHolder.removeNavigator()
     }
 
     override fun onBackPressed() {

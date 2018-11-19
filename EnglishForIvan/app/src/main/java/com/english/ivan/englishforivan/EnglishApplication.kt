@@ -1,24 +1,19 @@
 package com.english.ivan.englishforivan
 
 import android.app.Application
-import ru.terrakok.cicerone.Cicerone
-import ru.terrakok.cicerone.Router
+import com.english.ivan.englishforivan.dagger.AppComponent
+import com.english.ivan.englishforivan.dagger.DaggerAppComponent
 
 class EnglishApplication: Application() {
 
-    init {
-        initCicirone()
-    }
-
-    private fun initCicirone(){
-        cicirone = Cicerone.create()
-    }
-
     companion object {
-        private lateinit var cicirone: Cicerone<Router>
+        //platformStatic allow access it from java code
+        @JvmStatic lateinit var graph: AppComponent
+    }
 
-        fun getNavigatorHolder() = cicirone.navigatorHolder
+    override fun onCreate() {
+        super.onCreate()
+        graph = DaggerAppComponent.builder().build()
 
-        fun getRouter() = cicirone.router
     }
 }
